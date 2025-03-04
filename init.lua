@@ -1,6 +1,6 @@
 -- Base
 require("core.mappings")
-require("core.plugins")
+require("core.lazy")
 require("core.colors")
 require("core.configs")
 
