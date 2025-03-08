@@ -1,19 +1,14 @@
--- Base
-require("core.mappings")
-require("core.lazy")
-require("core.colors")
-require("core.configs")
+local api = vim.api
 
--- Plugins
-require("plugins.catgoose")
-require("plugins.gitsigns")
-require("plugins.lsp")
-require("plugins.neoscroll")
-require("plugins.neotree")
-require("plugins.cmp")
-require("plugins.mason")
-require("plugins.toggleterm")
-require("plugins.nullls")
-require("plugins.neoscroll")
-require("plugins.whichkey")
-require("visimatch")
+local core_conf_files = {
+  "options.lua",	-- setting options
+	"mappings.lua",	-- setting keymaps 
+	"plugins.lua",	-- settings for plugins
+	"config.lua",
+}
+
+for _, name in ipairs(core_conf_files) do
+  local path = string.format("%s/lua/%s", vim.fn.stdpath("config"), name)
+  local source_cmd = "source " .. path
+  vim.cmd(source_cmd)
+end
